@@ -3,33 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/animations.css">  
-    <link rel="stylesheet" href="css/main.css">  
-    <link rel="stylesheet" href="css/login.css">
-        
-    <title>Login</title>
+         <title>Login</title>
 </head>
 <body>
     <?php
         session_start();
-
         $_SESSION["user"]="";
         $_SESSION["usertype"]="";
-    
         date_default_timezone_set('Asia/Kolkata');
         $date = date('Y-m-d');
         $_SESSION["date"]=$date;
-    
         include("connection.php");
-    
         if($_POST){
             $email=$_POST['useremail'];
             $password=$_POST['userpassword'];
-            
             $error='<label for="promter" class="form-label"></label>';
-    
-            $result= $database->query("select * from webuser where email='$email'");
+             $result= $database->query("select * from webuser where email='$email'");
             if($result->num_rows==1){
                 $utype=$result->fetch_assoc()['usertype'];
                 if ($utype=='p'){
@@ -67,7 +56,6 @@
             $error='<label for="promter" class="form-label">&nbsp;</label>';
         }
     ?>
-
     <center>
         <div class="container">
             <table border="0" style="margin: 0;padding: 0;width: 60%;">
