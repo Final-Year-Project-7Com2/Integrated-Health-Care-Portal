@@ -4,16 +4,15 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../css/animations.css">
-<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/animations.css">  
+<link rel="stylesheet" href="../css/main.css">  
 <link rel="stylesheet" href="../css/admin.css">
-
 <title>Patients</title>
 <style>
-.popup {
+.popup{
 animation: transitionIn-Y-bottom 0.5s;
 }
-.sub-table {
+.sub-table{
 animation: transitionIn-Y-bottom 0.5s;
 }
 </style>
@@ -21,15 +20,15 @@ animation: transitionIn-Y-bottom 0.5s;
 <body>
 <?php
 session_start();
-
 if(isset($_SESSION["user"])){
 if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
 header("location: ../login.php");
 }
-}else{
+}
+else
+{
 header("location: ../login.php");
 }
-
 include("../connection.php");
 ?>
 <div class="container">
@@ -111,7 +110,7 @@ echo ' </datalist>';
 Today's Date
 </p>
 <p class="heading-sub12" style="padding: 0;margin: 0;">
-<?php
+<?php 
 date_default_timezone_set('Asia/Kolkata');
 $date = date('Y-m-d');
 echo $date;
@@ -131,7 +130,9 @@ echo $date;
 if($_POST){
 $keyword=$_POST["search"];
 $sqlmain= "select * from patient where pemail='$keyword' or pname='$keyword' or pname like '$keyword%' or pname like '%$keyword' or pname like '%$keyword%' ";
-}else{
+}
+else
+{
 $sqlmain= "select * from patient order by pid desc";
 }
 ?>
@@ -150,7 +151,9 @@ NIC
 </th>
 <th class="table-headin">
 Telephone
-</th>
+</th
+
+>
 <th class="table-headin">
 Email
 </th>
@@ -159,6 +162,7 @@ Date of Birth
 </th>
 <th class="table-headin">
 Events
+</th>
 </tr>
 </thead>
 <tbody>
@@ -177,8 +181,9 @@ echo '<tr>
 <br><br><br><br>
 </td>
 </tr>';
-}
-else{
+} 
+else 
+{
 for ( $x=0; $x<$result->num_rows;$x++){
 $row=$result->fetch_assoc();
 $pid=$row["pid"];
@@ -187,7 +192,6 @@ $email=$row["pemail"];
 $nic=$row["pnic"];
 $dob=$row["pdob"];
 $tel=$row["ptel"];
-
 echo '<tr>
 <td> &nbsp;'.substr($name,0,35).'</td>
 <td>'.substr($nic,0,12).'</td>
@@ -207,12 +211,12 @@ echo '<tr>
 </table>
 </div>
 </center>
-</td>
+</td> 
 </tr>
 </table>
 </div>
 </div>
-<?php
+<?php 
 if($_GET){
 $id=$_GET["id"];
 $action=$_GET["action"];
@@ -231,11 +235,9 @@ echo '
 <center>
 <a class="close" href="patient.php">&times;</a>
 <div class="content">
-
 </div>
 <div style="display: flex;justify-content: center;">
 <table width="80%" class="sub-table scrolldown add-doc-form-container" border="0">
-
 <tr>
 <td>
 <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">View Details.</p><br><br>
